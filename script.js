@@ -1,7 +1,7 @@
 var sliderProperty = {
         sliderClass : "wrap_slider",
-        numScroll : 2,
-        vieSlide : 4,
+        numScroll : 3,
+        vieSlide : 3,
         nextBtn : "right",
         prevBtn : "left"
       };
@@ -30,7 +30,6 @@ var sliderProperty = {
         
         function addStyle (mainSlider, sliderWrap) { 
           mainSlider.style.transition = "margin-left 250ms";
-          console.log(slideWidth * that.vieSlides);
           sliderWrap.style.width = slideWidth * that.vieSlides + 'px';
         }
         
@@ -41,7 +40,8 @@ var sliderProperty = {
           
         this.setNext = function() {
           var sliderMain = that.slider;
-          if( -marginLeft !== getLenghtSlider()) {
+
+          if( (-marginLeft) < getLenghtSlider()) {
              marginLeft = marginLeft - slideWidth * that.numSlides;
              sliderMain.style.marginLeft = marginLeft + 'px';
            } else {
@@ -53,7 +53,7 @@ var sliderProperty = {
         
         this.setPrev = function() {
           var sliderMain = that.slider;
-          if(marginLeft !== 0) {
+          if(marginLeft < 0) {
             marginLeft += slideWidth * that.numSlides;
             that.slider.style.marginLeft = marginLeft + 'px' 
           } else {
